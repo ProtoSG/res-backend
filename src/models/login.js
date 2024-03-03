@@ -1,7 +1,8 @@
 const { connection } = require('../services/conecction.bd')
 
-const getAdmin = async(username) => {
+const getAdmin = async({username}) => {
     try{
+        console.log(username)
         const [admin] = await connection.query(
             "SELECT admin_id AS id, admin_nombres AS nombres, admin_apellidos AS apellidos, admin_username AS username, admin_password AS password, admin_rol AS rol FROM Administrador WHERE admin_username = ?",
            [username]

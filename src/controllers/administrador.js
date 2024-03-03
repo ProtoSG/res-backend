@@ -8,9 +8,7 @@ const registerAdmin = async (req, res) => {
         console.log({ nombres, apellidos, username, password });
 
         const hashPass = await encrypPass(password);
-        const userAdmin = await getAdmin({ username }); // Asegúrate de pasar el username dentro de un objeto
-
-        console.log(hashPass)
+        const userAdmin = await getAdmin( {username} ); // Asegúrate de pasar el username dentro de un objeto
 
         if (userAdmin.length !== 0) {
             res.status(400).send({ error: 'Usuario existente' });

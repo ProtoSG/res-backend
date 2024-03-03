@@ -4,7 +4,7 @@ const { createJwt } = require('./../helpers/handleJwt')
 
 const loginAdmin = async(req, res) => {
     const { username, password } = req.body
-    const response = await getAdmin(username)
+    const response = await getAdmin({username})
     
     if(response.length === 0){
         res.status(404)
