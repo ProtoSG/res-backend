@@ -63,4 +63,19 @@ const deleteVentaPlato = async({idVentaPlato, idPlato}) => {
     }
 }
 
-module.exports = {insertVentaPlato, getVentaPlatoByid, deleteVentaPlato}
+const updateVentaPlato = async({idVentaPlato, cantidad}) => {
+    try{
+        await connection.execute(
+            "UPDATE VentaPlato SET cantidad = ? WHERE venta_plato_id = ?;",
+            [cantidad, idVentaPlato]
+        )
+
+        return { response : "Actualizado de manera exitosa"}
+
+    }catch (e){
+        console.error(e)
+        throw e
+    }
+}
+
+module.exports = {insertVentaPlato, getVentaPlatoByid, deleteVentaPlato, updateVentaPlato}
