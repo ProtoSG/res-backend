@@ -63,15 +63,14 @@ const deleteVentaPlato = async({idVentaPlato, idPlato}) => {
     }
 }
 
-const updateVentaPlato = async({idVentaPlato, cantidad}) => {
+const updateVentaPlato = async({idVentaPlato, cantidad, sub_total}) => {
     try{
         await connection.execute(
-            "UPDATE VentaPlato SET cantidad = ? WHERE venta_plato_id = ?;",
-            [cantidad, idVentaPlato]
+            "UPDATE VentaPlato SET cantidad = ?, sub_total = ? WHERE venta_plato_id = ?;",
+            [cantidad, sub_total, idVentaPlato]
         )
 
         return { response : "Actualizado de manera exitosa"}
-
     }catch (e){
         console.error(e)
         throw e

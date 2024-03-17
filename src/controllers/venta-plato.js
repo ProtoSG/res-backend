@@ -26,9 +26,9 @@ const deleteVP = async(req, res) => {
 
 const updateVP = async(req, res) => {
     const {idVentaPlato} = req.params;
-    const {cantidad} = req.body;
+    const {cantidad, sub_total} = req.body;
     
-    const response = await updateVentaPlato({idVentaPlato, cantidad})
+    const response = await updateVentaPlato({idVentaPlato, cantidad, sub_total})
     res.status(200)
     res.send(response)
 }
